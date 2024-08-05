@@ -1,0 +1,13 @@
+<form action="#" th:action="@{/update/{id}(id=${account.id})}" th:object="${account}" method="post">
+    <label for="accountId">Account Id</label>
+    <input type="text" th:field="*{accountId}" id="accountId" placeholder="accountId">
+    <br>
+    <label for="name">Customer Name</label>
+    <input type="text" th:field="*{customerProfile.name}" id="name" placeholder="Customer Name">
+    <br>
+    <label for="balance">Balance</label>
+    <input type="text" th:field="*{balance}" id="balance" placeholder="Balance">
+    <br>
+
+    <input type="submit" value="Update Account">
+</form>

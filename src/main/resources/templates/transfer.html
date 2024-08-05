@@ -1,0 +1,19 @@
+<form action="#" th:action="@{/transferfunds}" th:object="${transfer}" method="post">
+
+    <label for="fromAccountId">From Account</label>
+    <input type="text" th:field="*{fromAccountId}" id="fromAccountId" placeholder="From Account">
+    <br>
+    <br>
+
+    <label for="toAccountId">To Account</label>
+    <input type="text" th:field="*{toAccountId}" id="toAccountId" placeholder="To Account">
+    <br>
+    <br>
+
+    <label for="balance">Amount</label>
+    <input type="text" th:field="*{balance}" id="balance" placeholder="Amount">
+    <br>
+    <br>
+
+    <input type="submit" value="Transfer Funds">
+</form>

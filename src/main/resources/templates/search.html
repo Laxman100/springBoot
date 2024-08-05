@@ -1,0 +1,36 @@
+<form action="#" th:action="@{/searchAccountBy}" th:object="${account}" method="post">
+
+    <label for="accountId">Account Id</label>
+
+    <input type="text" th:field="*{accountId}" customerId="accountId" placeholder="accountId">
+
+    <br>
+    <br>
+
+    <input type="submit" value="Search Account">
+
+    <br>
+
+    <div class="container" th:switch="${accounts}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Customer Id</th>
+                <th>Balance</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="account : ${accounts}">
+                <td th:text="${account.accountId}"></td>
+                <td th:text="${account.balance}"></td>
+
+                <td><a th:href="@{/edit/{id}(id=${account.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${account.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</form>

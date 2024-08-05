@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<td><a th:href="@{/displayAll/{type}(type=accounts)}">Search All Accounts</a></td> &nbsp;&nbsp;
+<td><a th:href="@{/displayAll/{type}(type=profiles)}">Search All Profiles</a></td>
+
+<div class="container" th:switch="${accounts}">
+     <table class="table">
+        <thead>
+            <tr>
+                <th>Customer Id</th>
+                <th>Account Id</th>
+                <th>Customer Name</th>
+                <th>Balance</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="account : ${accounts}">
+                <td th:text="${account.customerProfile.customerId}"></td>
+                <td th:text="${account.accountId}"></td>
+                <td th:text="${account.customerProfile.name}"></td>
+                <td th:text="${account.balance}"></td>
+                <!--<td th:text="${account.email}"></td>-->
+                <td><a th:href="@{/edit/{id}(id=${account.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${account.id})}">Delete</a></td>
+            </tr>
+         </tbody>
+    </table>
+</div>
+
+<div th:switch="${profiles}">
+    <div th:case="*">
+        <h2>Accounts</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>customerId</th>
+                <th>Account Id</th>
+                <th>Customer Name</th>
+                <th>Balance</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="profile : ${profiles}">
+                <td th:text="${profile.name}"></td>
+                <td>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>account Id</th>
+                            <th>balance</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="account : ${profile.accounts}">
+                            <td th:text="${account.accountId}"></td>
+                            <td th:text="${account.balance}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

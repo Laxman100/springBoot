@@ -1,0 +1,22 @@
+<form action="#" th:action="@{/addaccount}" th:object="${account}" method="post">
+
+    <label for="accountId">Account Id</label>
+    <input type="text" th:field="*{accountId}" id="accountId" placeholder="accountId">
+    <br>
+    <br>
+
+    <label for="name">Customer Name</label>
+    <input type="text" th:field="*{customerProfile.name}" id="name" placeholder="Customer Name">
+    <!--<label for="accountId">Name</label>-->
+
+    <br>
+    <br>
+    <br>
+
+    <label for="balance">Balance</label>
+    <input type="text" th:field="*{balance}" id="balance" placeholder="Balance">
+    <!--<label for="accountId">Name</label>-->
+    <br>
+
+    <input type="submit" value="Add Account">
+</form>
